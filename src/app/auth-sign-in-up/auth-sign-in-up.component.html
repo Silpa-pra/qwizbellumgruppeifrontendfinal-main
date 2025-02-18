@@ -1,0 +1,93 @@
+<!-- The `active` class toggles between Sign-Up and Sign-In forms based on the `isActive` property -->
+<div class="container" [class.active]="isActive">
+
+  <!-- Sign Up Form -->
+  <div class="form-container sign-up">
+    <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
+      <h1>Create Account</h1>
+
+      <!-- Profile Picture Upload -->
+      <div class="profile-upload">
+        <div *ngIf="profileImagePreview; else uploadPlaceholder" class="preview-container">
+          <img [src]="profileImagePreview" alt="Profile preview" class="profile-preview">
+          <button type="button" class="remove-image" (click)="removeProfilePicture()">✕</button>
+        </div>
+        <ng-template #uploadPlaceholder>
+          <div class="upload-placeholder">
+            <label for="profilePicture" class="upload-label">
+              <div class="upload-icon">+</div>
+              <span>Add Profile Picture</span>
+            </label>
+          </div>
+        </ng-template>
+        <input
+          type="file"
+          id="profilePicture"
+          accept="image/*"
+          (change)="onFileSelected($event)"
+          class="file-input"
+        >
+      </div>
+
+      <!-- Username Field -->
+      <div *ngIf="signUpForm.get('name')?.touched && signUpForm.get('name')?.invalid" class="error">
+        Name is required
+      </div>
+      <input type="text" placeholder="Name" formControlName="name">
+
+      <!-- Email Field -->
+      <div *ngIf="signUpForm.get('email')?.touched && signUpForm.get('email')?.invalid" class="error">
+        <span *ngIf="signUpForm.get('email')?.errors?.['required']">Email is required</span>
+        <span *ngIf="signUpForm.get('email')?.errors?.['email']">Please enter a valid email</span>
+      </div>
+      <input type="email" placeholder="Email" formControlName="email">
+
+      <!-- Password Field -->
+      <div *ngIf="signUpForm.get('password')?.touched && signUpForm.get('password')?.invalid" class="error">
+        Password is required
+      </div>
+      <input type="password" placeholder="Password" formControlName="password">
+
+      <!-- Submit Button -->
+      <button type="submit" [disabled]="!signUpForm.valid">Sign Up</button>
+    </form>
+  </div>
+
+  <!-- Sign In Form -->
+  <div class="form-container sign-in">
+    <form [formGroup]="signInForm" (ngSubmit)="onSignIn()">
+      <h1>Sign In</h1>
+
+      <!-- Username Field -->
+      <div *ngIf="signInForm.get('username')?.touched && signInForm.get('username')?.invalid" class="error">
+        Username is required
+      </div>
+      <input type="text" placeholder="Username" formControlName="username">
+
+      <!-- Password Field -->
+      <div *ngIf="signInForm.get('password')?.touched && signInForm.get('password')?.invalid" class="error">
+        Password is required
+      </div>
+      <input type="password" placeholder="Password" formControlName="password">
+
+      <a href="#">Forgot your Password?</a>
+      <button type="submit" [disabled]="!signInForm.valid">Sign In</button>
+    </form>
+  </div>
+
+  <!-- Toggle Container -->
+  <div class="toggle-container">
+    <div class="toggle">
+      <div class="toggle-panel toggle-left">
+        <h1>Welcome Back!</h1>
+        <p>Enter your personal details to play & compete</p>
+        <button class="hidden" (click)="togglePanel()">Sign In</button>
+      </div>
+      <div class="toggle-panel toggle-right">
+        <h1>Hello, User!</h1>
+        <p>Register with your personal details to play & compete</p>
+        <button class="hidden" (click)="togglePanel()">Sign Up</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<div class="container">
+  <h1>Games History</h1>
+
+  <div *ngIf="isLoading" class="loading">Lade Spielerhistorie...</div>
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+
+  <!-- Tabelle zur Anzeige der Spielhistorie -->
+  <div class="table-wrapper" *ngIf="quizHistory.length > 0">
+    <table>
+      <thead>
+        <tr>
+          <th>Date Played</th>
+          <th>Score</th>
+          <th>Status</th>
+          <th>Players</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let game of quizHistory">
+
+          <td>{{ game.startTime | date: 'dd.MM.yyyy HH:mm' }}</td>
+          <td>{{ game.myScore }}</td>
+          <td>
+            <span [ngClass]="{
+              'status-win': game.myStatus === 'WON',
+              'status-loose': game.myStatus === 'LOST',
+              'status-undecided': game.myStatus === 'UNDECIDED'
+            }">
+              {{ game.myStatus }}
+            </span>
+          </td>
+          <td>{{ game.playerNames.join(', ') }}</td>
+          <td><button class="view-btn">View Details</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="quizHistory.length === 0 && !isLoading" class="no-history">
+    Keine Spielhistorie gefunden.
+  </div>
+
+  <div class="pagination">
+    <button disabled>Previous</button>
+    <span>Page 1 of 1</span>
+    <button disabled>Next</button>
+  </div>
+</div>

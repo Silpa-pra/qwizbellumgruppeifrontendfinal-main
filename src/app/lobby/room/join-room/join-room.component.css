@@ -1,0 +1,184 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-container {
+  background: white;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  max-height:90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  padding: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-content {
+  padding: 1rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #A855F7 #E5E7EB;
+}
+
+.modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: #E5E7EB;
+  border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background-color: #A855F7;
+  border-radius: 4px;
+}
+
+.room-card {
+  display: flex;
+  flex-direction: column;
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.room-name {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.room-details {
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.room-details ul {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0;
+}
+
+.room-details li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
+.player-name {
+  flex: 0 0 90px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.strength-bar {
+  flex: 1;
+  max-width: 300px;
+  height: 8px;
+  background: #E5E7EB;
+  border-radius: 9999px;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.strength-fill {
+  height: 100%;
+  background: #A855F7;
+  border-radius: 9999px;
+  transition: width 0.3s ease;
+}
+
+.btn-join, .btn-leave {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-join {
+  background: #673AB7;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  margin: 10px 8px 8px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.btn-join:hover {
+  background: #6d28d9;
+}
+
+.btn-join:disabled {
+  background: #9E9E9E;
+  cursor: not-allowed;
+}
+
+.btn-leave {
+  background: #E91E63;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  margin: 10px 8px 8px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.btn-leave:hover {
+  background: #C2185B;
+}
+
+.error-message {
+  background-color: #ffdddd;
+  color: #d8000c;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #d8000c;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.success-message {
+  background-color: #ddffdd;
+  color: #008000;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #008000;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #673AB7;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: #374151;
+}

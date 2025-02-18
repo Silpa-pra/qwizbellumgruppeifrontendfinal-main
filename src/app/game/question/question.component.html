@@ -1,0 +1,14 @@
+<div class="quiz-question-container">
+  <h3 class="quiz-question-text">{{ currentQuestion.questionText }}</h3>
+  <ul class="quiz-options-list">
+    <li class="quiz-option-item" *ngFor="let answer of currentQuestion.answers">
+      <button
+        class="quiz-option-button"
+        (click)="onSelectAnswer(answer.answerId)"
+        [disabled]="isDisabled">
+        <!-- IF ISCORET -- klasee correct ---- -->
+        {{ answer.answerText }}
+      </button>
+    </li>
+  </ul>
+</div>

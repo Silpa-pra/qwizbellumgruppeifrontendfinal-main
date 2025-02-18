@@ -1,0 +1,143 @@
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  height: 100vh;
+  background: linear-gradient(to right, #f3e5f5, #c9d6ff);
+  overflow-y: auto;
+}
+
+.game-wrapper {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.exit-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #7b1fa2;
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+  z-index: 10;
+  transition: background 0.3s ease-in-out;
+}
+
+.exit-button:hover {
+  background: #512da8;
+}
+
+.players-container {
+  background: linear-gradient(to right, #7b1fa2, #512da8);
+  padding: 20px 30px;
+  margin-bottom: 30px;
+  border-radius: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  color: white;
+}
+
+.player-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  background-color: #ffffff;
+  object-fit: cover;
+}
+
+.player-name {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: white;
+  text-align: center;
+}
+
+.timer-container {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: black;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 24px;
+  border-radius: 15px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.score {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.waiting-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.waiting-content {
+  background: white;
+  color: #512da8;
+  padding: 40px 60px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .game-wrapper {
+    padding: 15px;
+  }
+
+  .profile-circle {
+    width: 50px;
+    height: 50px;
+  }
+
+  .player-stats .profile-circle {
+    width: 50px;
+    height: 50px;
+  }
+
+  .player-name {
+    font-size: 1rem;
+  }
+
+  .timer-container {
+    font-size: 1rem;
+  }
+}

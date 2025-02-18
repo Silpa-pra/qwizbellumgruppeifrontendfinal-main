@@ -1,0 +1,37 @@
+<div class="modal-overlay">
+  <div class="modal-container">
+    <div class="modal-header">
+      <h2>Create Room</h2>
+      <button class="close-button" (click)="onClose()">×</button>
+    </div>
+
+    <div class="modal-content">
+      <div class="input-group">
+        <label>Numbers of Questions</label>
+        <input
+          type="text"
+          [(ngModel)]="noOfQuestions"
+          placeholder="Enter number of Questions">
+      </div>
+
+
+      <div class="input-group">
+        <label placeholder="">Numbers Of player</label>
+        <input
+          type="text"
+          [(ngModel)]="maxPlayers"
+          placeholder="Enter numbers of Players">
+      </div>
+
+      <div class="button-group">
+        <button
+          class="btn-create"
+          [disabled]="!maxPlayers || !noOfQuestions"
+          (click)="onCreateRoom()">
+          Create Room
+        </button>
+        <button class="btn-cancel" (click)="onClose()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

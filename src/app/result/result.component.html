@@ -1,0 +1,46 @@
+<div class="result-container">
+  <!-- Header mit Exit-Button -->
+  <div class="header">
+    <button class="exit-btn" (click)="onExit()">Exit</button>
+  </div>
+
+  <!-- Grid Layout für drei gleich große Spalten -->
+  <div class="bento-grid">
+
+    <!-- Main Message Box -->
+    <div class="bento-item message-box" [ngClass]="{'winner': status === 'WON', 'loser': status === 'LOST'}">
+      <h1>{{ status === 'WON' ? 'Congratulations!' : status === 'LOST' ? 'Nice Try!' : 'Game Undecided' }}</h1>
+      <p>
+        {{ status === 'WON' ? 'You Won!' : status === 'LOST' ? 'You Can Do Better Next Time!' : 'No clear winner this time.' }}
+      </p>
+    </div>
+
+    <!-- Leaderboard -->
+    <div class="bento-item leaderboard-box">
+      <h2>Leaderboard</h2>
+      <table class="leaderboard-table">
+        <tr>
+          <th>Rank</th>
+          <th>Player</th>
+          <th>Score</th>
+        </tr>
+        <tr *ngFor="let player of gameResults; let i = index"
+            [ngClass]="{'highlight-player': player.playerName === currentPlayer}">
+          <td>#{{ i + 1 }}</td>
+          <td>{{ player.playerName }}</td>
+          <td>{{ player.points }}</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Player Stats -->
+    <div class="bento-item stats-box">
+      <h2>Match Details</h2>
+      <div class="player-stats">
+        <p>Your Score: {{ score }}</p>
+        <p>Your Rank: <strong>#{{ yourRank }}</strong></p>
+      </div>
+    </div>
+  </div>
+
+</div>

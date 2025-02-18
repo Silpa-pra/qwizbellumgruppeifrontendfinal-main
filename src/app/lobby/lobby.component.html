@@ -1,0 +1,65 @@
+<div class="header">
+  <img class="logo" src="assets/logo_QB_final.png" alt="Logo">
+  <nav class="nav-links">
+    <a routerLink="/history">History</a>
+    <a href="#" (click)="logout()">Logout</a>
+    <div class="profile-circle">
+      <img [src]="profilePicture" *ngIf="profilePicture" alt="Profile">
+    </div>
+  </nav>
+</div>
+
+<h1 class="welcome-text">Welcome to Quizbellum Lobby, {{playerName}}</h1>
+
+<div class="content-grid">
+  <!-- Left Column -->
+  <div class="game-modes card">
+    <div class="single-player">
+      <h2>Single Player</h2>
+      <button class="btn-primary">Practice</button>
+      <button class="btn-primary" (click)="createSoloGame()">Play</button>
+    </div>
+
+    <div class="multi-player">
+      <h2>Multi Player</h2>
+      <button class="btn-primary" (click)="openCreateRoom()">Create new room</button>
+      <button class="btn-primary" (click)="openJoinRoom()">Join existing room</button>
+      <ng-container *ngIf="showCreateRoom">
+        <app-create-room
+          (close)="showCreateRoom = false"
+          (createRoom)="handleCreateRoom($event)">
+        </app-create-room>
+      </ng-container>
+
+      <ng-container *ngIf="showJoinRoom">
+        <app-join-room
+          (close)="showJoinRoom = false"
+          (joinRoom)="handleJoinRoom($event)">
+        </app-join-room>
+      </ng-container>
+    </div>
+  </div>
+
+<!-- Right Column -->
+<div class="leaderboard card">
+  <h2>Leaderboard</h2>
+  <div class="player-list">
+    <div class="player-row" *ngFor="let player of leaderboard">
+      <span>{{ player.playerName }}</span>
+      <span class="score">{{ player.totalScore }}</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- Bottom-stats -->
+<div class="stats-container card">
+  <div class="stat-box">
+    <h3>Total Players</h3>
+    <div class="stat-value">{{ totalPlayers }}</div>
+  </div>
+  <div class="stat-box">
+    <h3>Recent Games</h3>
+    <div class="stat-value">{{ recentGames }}</div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="game-wrapper">
+  <button class="exit-button" (click)="exitGame()">Exit</button>
+
+  <!-- Spieleranzeige -->
+  <div class="players-container">
+    <!-- Dynamische Schleife für alle Spieler -->
+    <div *ngFor="let player of allPlayers" class="player-stats">
+      <img [src]="player.profileImage" alt="Player Image" class="profile-circle" />
+      <span class="player-name">{{ player.username }}</span>
+      <span class="player-strength">Strength: {{ player.playerStrength }}</span>
+    </div>
+  </div>
+
+  <!-- Timer -->
+  <div class="timer-container">
+    <div class="timer">{{remainingTime}}</div>
+  </div>
+
+  <!-- Question Component -->
+  <app-question
+    *ngIf="currentQuestion"
+    [currentQuestion]="currentQuestion"
+    (answerSelected)="submitAnswer($event)">
+  </app-question>
+</div>
+
+<!-- Waiting Overlay für multiplayer -->
+@if (gameMode === 'multiplayer') {
+  <div *ngIf="waitForStart" class="waiting-overlay">
+    <div class="waiting-content">
+      <h2>Waiting for opponents...</h2>
+      <p>Please wait while others join in.</p>
+    </div>
+  </div>}
+<!-- Waiting Overlay für singleplayer -->
+@if (gameMode === 'single') {
+  <div *ngIf="waitForStart" class="waiting-overlay">
+    <div class="waiting-content">
+      <h2>Waiting for Questions to appear...</h2>
+      <p>Thank you!!</p>
+    </div>
+  </div>}

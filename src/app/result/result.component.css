@@ -1,0 +1,121 @@
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #E8EAF6, #C5CAE9);
+  padding: 20px;
+  overflow: auto;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
+}
+
+.exit-btn {
+  background: #512da8;
+  font-size: 1rem;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+
+.exit-btn:hover {
+  background: #4834d4;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+}
+
+.bento-item {
+  background: white;
+  backdrop-filter: blur(10px);
+  border-radius: 1.5rem;
+  border: 2px solid #5c6bc0;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+
+.bento-item:hover {
+  transform: translateY(-5px);
+}
+
+.message-box {
+  grid-column: 1 / -1;
+
+  text-align: center;
+  padding: 3rem;
+}
+
+.message-box.winner {
+  background: linear-gradient(to right, #5c6bc0, #512da8);
+}
+
+.message-box.loser {
+  background: linear-gradient(to right, #5c6bc0, #512da8);
+}
+
+.message-box h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.leaderboard-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.leaderboard-table th, .leaderboard-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.stats-box {
+  display: flex;
+  font-size: 1.5rem;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.player-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+button {
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.3s, background 0.3s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+}
+
+
+@media (max-width: 768px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+}

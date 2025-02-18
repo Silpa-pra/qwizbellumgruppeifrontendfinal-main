@@ -1,0 +1,60 @@
+<div class="modal-overlay">
+  <div class="modal-container">
+    <div class="modal-header">
+      <h2>Join Room</h2>
+      <button class="close-button" (click)="onClose()">&times;</button>
+    </div>
+
+    <!-- Fehlerbereich -->
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+
+    <!-- Erfolgsbereich -->
+    <div *ngIf="successMessage" class="success-message">
+      {{ successMessage }}
+    </div>
+
+    <div class="modal-content">
+      <div class="rooms-list">
+        <ng-container *ngIf="games.length === 0; else roomsAvailable">
+          <div class="no-rooms">No open games available</div>
+        </ng-container>
+        <ng-template #roomsAvailable>
+          <div *ngFor="let game of games; let index = index" class="room-card">
+            <div class="room-info">
+              <div class="room-name">Game {{ index + 1 }}</div>
+              <div class="room-details">
+                <div>Players List:</div>
+                <ul>
+                  <li *ngFor="let player of game.players; let pIndex = index">
+                  <div class="player-name">
+                    {{ player.playerName }}
+                  </div>
+
+                   <div class="strength-bar"  title=" Player Strength bar">
+                    <div class="strength-fill" [style.width.%]="player.playerStrength"></div>
+                   </div>
+                  </li>
+                </ul>
+                <span>GameSize: {{ game.players.length }}/{{ game.maxPlayers }}</span>
+              </div>
+            </div>
+            <div class="button-container">
+            <button class="btn-join"
+              [disabled]="game.players.length >= (game.maxPlayers || 4)|| isJoining"
+              (click)="onJoinRoom(game.gameSessionID)">
+              Join
+            </button>
+            <button
+              class="btn-leave"
+              (click)="onLeaveRoom(game.gameSessionID)">
+              Leave
+            </button>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
